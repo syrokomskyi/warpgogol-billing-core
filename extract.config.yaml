@@ -1,3 +1,4 @@
+forgePlugin: false
 # extract.config.yaml — standalone package export for @warpgogol/warpgogol-billing-core
 
 projectDir: packages/warpgogol-billing-core
