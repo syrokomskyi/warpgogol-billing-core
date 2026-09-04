@@ -1,17 +1,17 @@
 # @warpgogol/warpgogol-billing-core — Agent Guide
 
-**Workspace type:** Package
+**Workspace type:** Package Implements [RFC-1012](../../docs/rfcs/rfc-1012-billing-read-projection-and-pdf-references.md): Billing read projection and PDF references.
 
 Provider-neutral billing read projection contracts, schemas, and kernel commands.
 
 ## Entry points
 
-| Entry point | Module |
-| --- | --- |
-| `@warpgogol/warpgogol-billing-core` | `./src/index.ts` |
-| `@warpgogol/warpgogol-billing-core/kernel` | `./src/kernel/index.ts` |
+| Entry point                                 | Module                   |
+| ------------------------------------------- | ------------------------ |
+| `@warpgogol/warpgogol-billing-core`         | `./src/index.ts`         |
+| `@warpgogol/warpgogol-billing-core/kernel`  | `./src/kernel/index.ts`  |
 | `@warpgogol/warpgogol-billing-core/schemas` | `./src/schemas/index.ts` |
-| `@warpgogol/warpgogol-billing-core/ports` | `./src/billing-store.ts` |
+| `@warpgogol/warpgogol-billing-core/ports`   | `./src/billing-store.ts` |
 
 ## Commands
 
@@ -36,8 +36,8 @@ Provider-neutral billing read projection contracts, schemas, and kernel commands
 
 ## Scripts
 
-| Script | Command |
-| --- | --- |
+| Script        | Command                                   |
+| ------------- | ----------------------------------------- |
 | `build:check` | `pnpm exec tsc -p tsconfig.json --noEmit` |
-| `test` | `vitest run` |
-| `lint` | `pnpm exec eslint "src/**/*.ts"` |
+| `test`        | `vitest run`                              |
+| `lint`        | `pnpm exec eslint "src/**/*.ts"`          |
