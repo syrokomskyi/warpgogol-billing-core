@@ -6,25 +6,28 @@
 <CHANGE_SUMMARY><item>RFC-1012: initial billing kernel module with three commands.</item></CHANGE_SUMMARY>
 */
 
-import type { KernelModule, KernelRuntimeContext } from "@warpgogol/werkstatt-engine/kernel";
+import type { KernelRuntimeContext } from "@warpgogol/werkstatt-engine/kernel";
 import type { BillingStore } from "./billing-store.ts";
 import { createInvoiceListCommand } from "./commands/invoice-list.ts";
 import { createInvoiceShowCommand } from "./commands/invoice-show.ts";
 import { createPaymentRecordCommand } from "./commands/payment-record.ts";
+import type { ModuleExport } from "@warpgogol/werkstatt-engine/runtime/desired-state";
 
 export type BillingStoreResolver = (context: KernelRuntimeContext) => Promise<BillingStore | null>;
 
 export function createBillingKernelModule(
   resolveStore: BillingStoreResolver = () => Promise.resolve(null),
-): KernelModule {
+): ModuleExport {
   return {
     name: "billing",
     version: "0.1.0",
-    register(registry) {
-      registry.registerCommand(createInvoiceListCommand(resolveStore));
-      registry.registerCommand(createInvoiceShowCommand(resolveStore));
-      registry.registerCommand(createPaymentRecordCommand(resolveStore));
-    },
+    declarations: [],
+    commands: [
+      createInvoiceListCommand(resolveStore),
+      createInvoiceShowCommand(resolveStore),
+      createPaymentRecordCommand(resolveStore),
+    ],
+    pipelines: [],
   };
 }
 

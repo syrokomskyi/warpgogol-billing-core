@@ -41,7 +41,7 @@ function mockContext(): KernelRuntimeContext {
       readdir: async () => [],
       stat: async () => ({}),
     } as any,
-    registry: {
+    actualState: {
       commands: new Map(),
       commandModules: new Map(),
       pipelines: new Map(),
