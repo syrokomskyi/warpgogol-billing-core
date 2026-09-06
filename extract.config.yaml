@@ -4,7 +4,6 @@ forgePlugin: false
 projectDir: packages/warpgogol-billing-core
 destName: warpgogol-billing-core
 standalone: true
-versionBump: patch
 
 workspacePrefixes:
   - "@warpgogol/"
