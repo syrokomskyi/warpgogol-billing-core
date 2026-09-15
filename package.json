@@ -8,10 +8,22 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "exports": {
-    ".": { "types": "./src/index.ts", "default": "./src/index.ts" },
-    "./kernel": { "types": "./src/kernel/index.ts", "default": "./src/kernel/index.ts" },
-    "./schemas": { "types": "./src/schemas/index.ts", "default": "./src/schemas/index.ts" },
-    "./ports": { "types": "./src/billing-store.ts", "default": "./src/billing-store.ts" }
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./kernel": {
+      "types": "./src/kernel/index.ts",
+      "default": "./src/kernel/index.ts"
+    },
+    "./schemas": {
+      "types": "./src/schemas/index.ts",
+      "default": "./src/schemas/index.ts"
+    },
+    "./ports": {
+      "types": "./src/billing-store.ts",
+      "default": "./src/billing-store.ts"
+    }
   },
   "files": [
     "dist/",
@@ -33,18 +45,22 @@
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "engines": { "node": ">=24" },
+  "engines": {
+    "node": ">=24"
+  },
   "dependencies": {
     "@warpgogol/werkstatt-engine": "workspace:*",
-    "zod": "^4.4.3"
+    "zod": "^4.6.5"
   },
   "devDependencies": {
-    "@types/node": "^26.2.0",
+    "@types/node": "^26.5.1",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
-    "fast-check": "^4.9.0",
-    "typescript": "^6.0.3",
-    "vitest": "^4.1.11"
+    "fast-check": "^4.10.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.0"
   },
-  "publishConfig": { "access": "public" }
+  "publishConfig": {
+    "access": "public"
+  }
 }
