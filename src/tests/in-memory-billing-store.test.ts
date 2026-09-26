@@ -82,13 +82,23 @@ describe("InMemoryBillingStore", () => {
     });
 
     it("uses provided invoiceId", async () => {
-      const created = await store.upsertInvoice(PROJECT_ID, { ...VALID_INVOICE, invoiceId: "custom-id" });
+      const created = await store.upsertInvoice(PROJECT_ID, {
+        ...VALID_INVOICE,
+        invoiceId: "custom-id",
+      });
       expect(created.invoiceId).toBe("custom-id");
     });
 
     it("overwrites existing invoice with same ID", async () => {
-      const created = await store.upsertInvoice(PROJECT_ID, { ...VALID_INVOICE, invoiceId: "inv-1" });
-      await store.upsertInvoice(PROJECT_ID, { ...VALID_INVOICE, invoiceId: "inv-1", status: "paid" });
+      const created = await store.upsertInvoice(PROJECT_ID, {
+        ...VALID_INVOICE,
+        invoiceId: "inv-1",
+      });
+      await store.upsertInvoice(PROJECT_ID, {
+        ...VALID_INVOICE,
+        invoiceId: "inv-1",
+        status: "paid",
+      });
       const found = await store.getInvoice(PROJECT_ID, "inv-1");
       expect(found!.status).toBe("paid");
     });

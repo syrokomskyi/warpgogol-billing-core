@@ -6,4 +6,8 @@
 <CHANGE_SUMMARY><item>RFC-1012: export the billing kernel module.</item></CHANGE_SUMMARY>
 */
 
-export { createBillingKernelModule, billingKernelModule, type BillingStoreResolver } from "../kernel-module.ts";
+export {
+  createBillingKernelModule,
+  billingKernelModule,
+  type BillingStoreResolver,
+} from "../kernel-module.ts";

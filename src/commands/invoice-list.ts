@@ -6,14 +6,10 @@
 <CHANGE_SUMMARY><item>RFC-1012: initial billing.invoice.list handler.</item></CHANGE_SUMMARY>
 */
 
-import type {
-  KernelCommandResult,
-  KernelRuntimeContext,
-} from "@warpgogol/werkstatt-engine/kernel";
+import type { KernelCommandResult, KernelRuntimeContext } from "@warpgogol/werkstatt-engine/kernel";
 import type { BillingStore } from "../billing-store.ts";
 
-const modulePath =
-  "packages/warpgogol-billing-core/src/commands/invoice-list.ts";
+const modulePath = "packages/warpgogol-billing-core/src/commands/invoice-list.ts";
 
 export interface InvoiceListData {
   command: string;
@@ -23,7 +19,9 @@ export interface InvoiceListData {
   observedAt: string;
 }
 
-export function createInvoiceListCommand(storeResolver: (context: KernelRuntimeContext) => Promise<BillingStore | null>) {
+export function createInvoiceListCommand(
+  storeResolver: (context: KernelRuntimeContext) => Promise<BillingStore | null>,
+) {
   return {
     name: "billing.invoice.list",
     modulePath,
@@ -48,20 +46,39 @@ export function createInvoiceListCommand(storeResolver: (context: KernelRuntimeC
       const store = await storeResolver(context);
       if (!store) {
         return {
-          data: { command: "billing.invoice.list", projectId, revision: 0, invoices: [], observedAt: new Date().toISOString() },
+          data: {
+            command: "billing.invoice.list",
+            projectId,
+            revision: 0,
+            invoices: [],
+            observedAt: new Date().toISOString(),
+          },
           exitCode: 1,
           summary: `[billing.invoice.list] Billing store unavailable for project ${projectId}`,
-          nextSteps: [{ action: "Ensure a billing store adapter is configured.", kind: "required" as const }],
+          nextSteps: [
+            { action: "Ensure a billing store adapter is configured.", kind: "required" as const },
+          ],
         };
       }
 
       const readModel = await store.getBillingReadModel(projectId);
       if (!readModel) {
         return {
-          data: { command: "billing.invoice.list", projectId, revision: 0, invoices: [], observedAt: new Date().toISOString() },
+          data: {
+            command: "billing.invoice.list",
+            projectId,
+            revision: 0,
+            invoices: [],
+            observedAt: new Date().toISOString(),
+          },
           exitCode: 1,
           summary: `[billing.invoice.list] Project ${projectId} not found`,
-          nextSteps: [{ action: `Run project.lifecycle.create to initialize project ${projectId}.`, kind: "required" as const }],
+          nextSteps: [
+            {
+              action: `Run project.lifecycle.create to initialize project ${projectId}.`,
+              kind: "required" as const,
+            },
+          ],
         };
       }
 

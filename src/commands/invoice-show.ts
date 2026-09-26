@@ -6,26 +6,25 @@
 <CHANGE_SUMMARY><item>RFC-1012: initial billing.invoice.show handler.</item></CHANGE_SUMMARY>
 */
 
-import type {
-  KernelCommandResult,
-  KernelRuntimeContext,
-} from "@warpgogol/werkstatt-engine/kernel";
+import type { KernelCommandResult, KernelRuntimeContext } from "@warpgogol/werkstatt-engine/kernel";
 import type { BillingStore } from "../billing-store.ts";
 import type { InvoiceV1 } from "../schemas/index.ts";
 
-const modulePath =
-  "packages/warpgogol-billing-core/src/commands/invoice-show.ts";
+const modulePath = "packages/warpgogol-billing-core/src/commands/invoice-show.ts";
 
 export interface InvoiceShowData {
   command: string;
   invoice: InvoiceV1 | null;
 }
 
-export function createInvoiceShowCommand(storeResolver: (context: KernelRuntimeContext) => Promise<BillingStore | null>) {
+export function createInvoiceShowCommand(
+  storeResolver: (context: KernelRuntimeContext) => Promise<BillingStore | null>,
+) {
   return {
     name: "billing.invoice.show",
     modulePath,
-    description: "Show a single invoice by ID for a project. Requires --project-id and --invoice-id.",
+    description:
+      "Show a single invoice by ID for a project. Requires --project-id and --invoice-id.",
     scope: "workspace" as const,
     mutatesState: false,
     requiresNetwork: false,
@@ -55,7 +54,9 @@ export function createInvoiceShowCommand(storeResolver: (context: KernelRuntimeC
           data: { command: "billing.invoice.show", invoice: null },
           exitCode: 1,
           summary: `[billing.invoice.show] Billing store unavailable for project ${projectId}`,
-          nextSteps: [{ action: "Ensure a billing store adapter is configured.", kind: "required" as const }],
+          nextSteps: [
+            { action: "Ensure a billing store adapter is configured.", kind: "required" as const },
+          ],
         };
       }
 
@@ -65,7 +66,12 @@ export function createInvoiceShowCommand(storeResolver: (context: KernelRuntimeC
           data: { command: "billing.invoice.show", invoice: null },
           exitCode: 1,
           summary: `[billing.invoice.show] Invoice ${invoiceId} not found for project ${projectId}`,
-          nextSteps: [{ action: `Verify the invoice ID and project ID. Run billing.invoice.list --project-id ${projectId} to see available invoices.`, kind: "required" as const }],
+          nextSteps: [
+            {
+              action: `Verify the invoice ID and project ID. Run billing.invoice.list --project-id ${projectId} to see available invoices.`,
+              kind: "required" as const,
+            },
+          ],
         };
       }
 

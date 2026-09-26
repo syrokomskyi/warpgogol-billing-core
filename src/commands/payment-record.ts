@@ -6,15 +6,11 @@
 <CHANGE_SUMMARY><item>RFC-1012: initial billing.payment.record handler.</item></CHANGE_SUMMARY>
 */
 
-import type {
-  KernelCommandResult,
-  KernelRuntimeContext,
-} from "@warpgogol/werkstatt-engine/kernel";
+import type { KernelCommandResult, KernelRuntimeContext } from "@warpgogol/werkstatt-engine/kernel";
 import type { BillingStore } from "../billing-store.ts";
 import type { PaymentRecordV1 } from "../schemas/index.ts";
 
-const modulePath =
-  "packages/warpgogol-billing-core/src/commands/payment-record.ts";
+const modulePath = "packages/warpgogol-billing-core/src/commands/payment-record.ts";
 
 export interface PaymentRecordData {
   command: string;
@@ -23,11 +19,14 @@ export interface PaymentRecordData {
 
 const PAYABLE_STATUSES = new Set(["due", "overdue"]);
 
-export function createPaymentRecordCommand(storeResolver: (context: KernelRuntimeContext) => Promise<BillingStore | null>) {
+export function createPaymentRecordCommand(
+  storeResolver: (context: KernelRuntimeContext) => Promise<BillingStore | null>,
+) {
   return {
     name: "billing.payment.record",
     modulePath,
-    description: "Record a manual operator payment for an invoice. Requires --project-id, --invoice-id, --amount, --currency, --actor.",
+    description:
+      "Record a manual operator payment for an invoice. Requires --project-id, --invoice-id, --amount, --currency, --actor.",
     scope: "workspace" as const,
     mutatesState: true,
     requiresNetwork: false,
@@ -78,7 +77,9 @@ export function createPaymentRecordCommand(storeResolver: (context: KernelRuntim
           data: { command: "billing.payment.record", payment: null },
           exitCode: 1,
           summary: `[billing.payment.record] Billing store unavailable for project ${projectId}`,
-          nextSteps: [{ action: "Ensure a billing store adapter is configured.", kind: "required" as const }],
+          nextSteps: [
+            { action: "Ensure a billing store adapter is configured.", kind: "required" as const },
+          ],
         };
       }
 
@@ -88,7 +89,12 @@ export function createPaymentRecordCommand(storeResolver: (context: KernelRuntim
           data: { command: "billing.payment.record", payment: null },
           exitCode: 1,
           summary: `[billing.payment.record] Invoice ${invoiceId} not found for project ${projectId}`,
-          nextSteps: [{ action: `Run billing.invoice.list --project-id ${projectId} to see available invoices.`, kind: "required" as const }],
+          nextSteps: [
+            {
+              action: `Run billing.invoice.list --project-id ${projectId} to see available invoices.`,
+              kind: "required" as const,
+            },
+          ],
         };
       }
 
@@ -97,7 +103,12 @@ export function createPaymentRecordCommand(storeResolver: (context: KernelRuntim
           data: { command: "billing.payment.record", payment: null },
           exitCode: 1,
           summary: `[billing.payment.record] Invoice ${invoiceId} is not in a payable state (status: ${invoice.status})`,
-          nextSteps: [{ action: `Invoice must be in 'due' or 'overdue' state to record a payment. Current status: ${invoice.status}.`, kind: "required" as const }],
+          nextSteps: [
+            {
+              action: `Invoice must be in 'due' or 'overdue' state to record a payment. Current status: ${invoice.status}.`,
+              kind: "required" as const,
+            },
+          ],
         };
       }
 
@@ -106,7 +117,12 @@ export function createPaymentRecordCommand(storeResolver: (context: KernelRuntim
           data: { command: "billing.payment.record", payment: null },
           exitCode: 1,
           summary: `[billing.payment.record] Payment currency ${currency} does not match invoice currency ${invoice.currency}`,
-          nextSteps: [{ action: `Use currency ${invoice.currency} to match the invoice.`, kind: "required" as const }],
+          nextSteps: [
+            {
+              action: `Use currency ${invoice.currency} to match the invoice.`,
+              kind: "required" as const,
+            },
+          ],
         };
       }
 

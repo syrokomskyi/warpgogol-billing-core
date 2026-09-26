@@ -38,9 +38,9 @@ describe("isMonotonic", () => {
   it("property: any sorted-ascending unique sequence is monotonic", () => {
     fc.assert(
       fc.property(
-        fc.uniqueArray(fc.integer({ min: 0, max: 1000 }), { minLength: 1, maxLength: 50 }).map((arr) =>
-          [...arr].sort((a, b) => a - b),
-        ),
+        fc
+          .uniqueArray(fc.integer({ min: 0, max: 1000 }), { minLength: 1, maxLength: 50 })
+          .map((arr) => [...arr].sort((a, b) => a - b)),
         (sorted) => {
           expect(isMonotonic(sorted)).toBe(true);
         },
@@ -68,9 +68,9 @@ describe("isGapTolerant", () => {
   it("property: any non-decreasing sequence is gap-tolerant", () => {
     fc.assert(
       fc.property(
-        fc.array(fc.integer({ min: 0, max: 100 }), { minLength: 0, maxLength: 50 }).map((arr) =>
-          [...arr].sort((a, b) => a - b),
-        ),
+        fc
+          .array(fc.integer({ min: 0, max: 100 }), { minLength: 0, maxLength: 50 })
+          .map((arr) => [...arr].sort((a, b) => a - b)),
         (sorted) => {
           expect(isGapTolerant(sorted)).toBe(true);
         },

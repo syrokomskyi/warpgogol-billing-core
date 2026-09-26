@@ -11,6 +11,13 @@ Sweep batch 3: rewrote ~95 purposes across werkstatt-knowledge, werkstatt-shared
 </CHANGE_SUMMARY>
 */
 
-export { invoiceV1Schema, invoiceKindSchema, invoiceStatusSchema, type InvoiceV1, type InvoiceKind, type InvoiceStatus } from "./invoice.ts";
+export {
+  invoiceV1Schema,
+  invoiceKindSchema,
+  invoiceStatusSchema,
+  type InvoiceV1,
+  type InvoiceKind,
+  type InvoiceStatus,
+} from "./invoice.ts";
 export { paymentRecordV1Schema, type PaymentRecordV1 } from "./payment-record.ts";
 export { billingReadModelSchema, type BillingReadModel } from "./billing-read-model.ts";

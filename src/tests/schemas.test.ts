@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { invoiceV1Schema, paymentRecordV1Schema, billingReadModelSchema } from "../schemas/index.ts";
+import {
+  invoiceV1Schema,
+  paymentRecordV1Schema,
+  billingReadModelSchema,
+} from "../schemas/index.ts";
 
 describe("invoiceV1Schema", () => {
   it("accepts a valid invoice", () => {
