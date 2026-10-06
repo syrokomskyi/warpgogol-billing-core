@@ -23,6 +23,10 @@
     "./ports": {
       "types": "./src/billing-store.ts",
       "default": "./src/billing-store.ts"
+    },
+    "./usage": {
+      "types": "./src/usage-metering.ts",
+      "default": "./src/usage-metering.ts"
     }
   },
   "files": [

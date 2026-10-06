@@ -17,3 +17,12 @@ export { type BillingReadModel, billingReadModelSchema } from "./schemas/billing
 export type { BillingStore } from "./billing-store.ts";
 export { nextRevision, isMonotonic, isGapTolerant } from "./billing-revision.ts";
 export { InMemoryBillingStore } from "./in-memory-billing-store.ts";
+export {
+  billingUsageRecordSchema,
+  usageRecordToMeterEvent,
+  ingestUsageRecords,
+  type BillingUsageRecord,
+  type BillingUsageSink,
+  type UsageIngestionResult,
+  type UsageMeterEvent,
+} from "./usage-metering.ts";
