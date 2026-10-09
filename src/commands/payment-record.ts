@@ -24,6 +24,7 @@ export function createPaymentRecordCommand(
 ) {
   return {
     name: "billing.payment.record",
+    coverage: "operator" as const,
     modulePath,
     description:
       "Record a manual operator payment for an invoice. Requires --project-id, --invoice-id, --amount, --currency, --actor.",

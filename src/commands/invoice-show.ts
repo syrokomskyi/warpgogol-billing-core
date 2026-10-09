@@ -22,6 +22,7 @@ export function createInvoiceShowCommand(
 ) {
   return {
     name: "billing.invoice.show",
+    coverage: "operator" as const,
     modulePath,
     description:
       "Show a single invoice by ID for a project. Requires --project-id and --invoice-id.",

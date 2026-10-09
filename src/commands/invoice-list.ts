@@ -24,6 +24,7 @@ export function createInvoiceListCommand(
 ) {
   return {
     name: "billing.invoice.list",
+    coverage: "operator" as const,
     modulePath,
     description: "List all invoices for a project with billing revision. Requires --project-id.",
     scope: "workspace" as const,
