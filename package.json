@@ -1,6 +1,6 @@
 {
   "name": "@warpgogol/warpgogol-billing-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "type": "module",
   "license": "Apache-2.0",
@@ -43,6 +43,7 @@
     "src/commands/",
     "src/kernel/",
     "src/kernel-module.ts",
+    "src/usage-metering.ts",
     "README.md"
   ],
   "scripts": {
