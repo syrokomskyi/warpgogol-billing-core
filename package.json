@@ -58,7 +58,7 @@
     "node": ">=24 <25"
   },
   "dependencies": {
-    "@warpgogol/werkstatt-engine": "workspace:*",
+    "@warpgogol/werkstatt-engine": "^1.13.0",
     "zod": "^4.6.5"
   },
   "devDependencies": {
@@ -73,5 +73,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "packageManager": "pnpm@11.10.0"
 }
