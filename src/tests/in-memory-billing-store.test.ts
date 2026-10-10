@@ -90,7 +90,7 @@ describe("InMemoryBillingStore", () => {
     });
 
     it("overwrites existing invoice with same ID", async () => {
-      const created = await store.upsertInvoice(PROJECT_ID, {
+      await store.upsertInvoice(PROJECT_ID, {
         ...VALID_INVOICE,
         invoiceId: "inv-1",
       });

@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { InMemoryBillingStore } from "../in-memory-billing-store.ts";
 import { createInvoiceListCommand } from "../commands/invoice-list.ts";
 import { createInvoiceShowCommand } from "../commands/invoice-show.ts";
