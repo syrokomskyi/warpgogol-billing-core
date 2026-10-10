@@ -11,6 +11,7 @@ stripScopes:
   - "@warpgogol/"
 preservePackages:
   - "@warpgogol/warpgogol-billing-core"
+  - "@warpgogol/werkstatt-engine"
 packageManager: pnpm
 
 ci:
